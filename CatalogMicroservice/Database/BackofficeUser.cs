@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace CatalogMicroservice.Database
 {
-    public class ServiceType
+    public class BackofficeUser
     {
         [Key]
-        public int ServiceTypeId { get; set; }
-        public string Description { get; set; }
+        public string UPCCode { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Names { get; set; }
+        public string Email { get; set; }        
         public DateTime CreationDate { get; set; }
         public string CreationUser { get; set; }
 
         // Foreign Key
-        public virtual ICollection<KnowledgeBase> KnowledgeBase { get; set; }
-        public virtual ICollection<ServiceRequest> ServiceRequest { get; set; }
-        
+        public virtual ICollection<BiblioSchedule> BiblioSchedule { get; set; }
     }
 }

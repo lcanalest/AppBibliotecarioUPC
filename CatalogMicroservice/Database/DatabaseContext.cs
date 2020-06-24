@@ -18,6 +18,11 @@ namespace CatalogMicroservice.Database
         public DbSet<AttentionMode> AttentionModes { get; set; }
         public DbSet<Campus> Campus { get; set; }
         public DbSet<KnowledgeBase> KnowledgeBase { get; set; }
+        public DbSet<BackofficeUser> BackofficeUsers { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
+        public DbSet<BiblioSchedule> BiblioSchedule { get; set; }
+        public DbSet<ServiceRequest> ServiceRequests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,15 +34,60 @@ namespace CatalogMicroservice.Database
                 .HasKey(a => new { a.AttentionModeId });
 
             modelBuilder.Entity<Campus>()
-                .HasKey(a => new { a.CampusId });
+                .HasKey(c => new { c.CampusId });
 
             modelBuilder.Entity<KnowledgeBase>()
-                .HasKey(a => new { a.QuestionId });
+                .HasKey(k => new { k.QuestionId });
 
             modelBuilder.Entity<KnowledgeBase>()
             .HasOne(s => s.ServiceType)
             .WithMany(k => k.KnowledgeBase)
             .HasForeignKey(s => s.ServiceTypeId);
+
+            modelBuilder.Entity<BackofficeUser>()
+                .HasKey(bu => new { bu.UPCCode });
+
+            modelBuilder.Entity<Role>()
+                .HasKey(r => new { r.RoleId});
+
+            modelBuilder.Entity<UserRoles>()
+                .HasKey(ur => new { ur.UPCCode, ur.RoleId });
+
+            modelBuilder.Entity<UserRoles>()
+            .HasOne(r => r.Role)
+            .WithMany(u => u.UserRoles)
+            .HasForeignKey(r => r.RoleId);            
+
+            modelBuilder.Entity<BiblioSchedule>()
+                .HasKey(bs => new { bs.UPCCode, bs.CampusId });
+
+            modelBuilder.Entity<BiblioSchedule>()
+            .HasOne(bu => bu.BackofficeUser)
+            .WithMany(bs => bs.BiblioSchedule)
+            .HasForeignKey(bu => bu.UPCCode);
+
+            modelBuilder.Entity<BiblioSchedule>()
+            .HasOne(c => c.Campus)
+            .WithMany(bs => bs.BiblioSchedule)
+            .HasForeignKey(c => c.CampusId);
+
+            modelBuilder.Entity<ServiceRequest>()
+                .HasKey(sr => new { sr.ServiceRequestId });
+
+            modelBuilder.Entity<ServiceRequest>()
+            .HasOne(st => st.ServiceType)
+            .WithMany(sr => sr.ServiceRequest)
+            .HasForeignKey(st => st.ServiceTypeId);
+
+            modelBuilder.Entity<ServiceRequest>()
+            .HasOne(am => am.AttentionMode)
+            .WithMany(sr => sr.ServiceRequest)
+            .HasForeignKey(am => am.AttentionModeId);
+
+            modelBuilder.Entity<ServiceRequest>()
+            .HasOne(c => c.Campus)
+            .WithMany(sr => sr.ServiceRequest)
+            .HasForeignKey(c => c.CampusId);
 
             modelBuilder
                 .Entity<ServiceType>()
@@ -281,6 +331,82 @@ namespace CatalogMicroservice.Database
                     CreationUser = "ADMIN01"
                 }
                 );
+
+            modelBuilder
+                .Entity<BackofficeUser>()
+                .HasData(
+                new BackofficeUser
+                {
+                    UPCCode = "b20200601",
+                    FirstName = "Mármol",
+                    LastName = "Coloma",
+                    Names = "Roberto André",
+                    Email = "b20200601@upc.edu.pe",
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                },
+                new BackofficeUser
+                {
+                    UPCCode = "s20200601",                    
+                    FirstName = "Chumacero",
+                    LastName = "Cruz",
+                    Names = "Luigui",
+                    Email = "s20200601@upc.edu.pe",
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                }
+                );
+
+            modelBuilder
+                .Entity<Role>()
+                .HasData(
+                new Role
+                {
+                    RoleId = 1,
+                    Description = "Bibliotecólogo",
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                },
+                new Role
+                {
+                    RoleId = 2,
+                    Description = "Supervisor",
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                }
+                );
+
+            modelBuilder
+                .Entity<UserRoles>()
+                .HasData(
+                new UserRoles
+                {
+                    UPCCode = "b20200601",
+                    RoleId = 1,                    
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                },
+                new UserRoles
+                {
+                    UPCCode = "s20200601",
+                    RoleId = 2,
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                }
+                );
+
+            modelBuilder
+                .Entity<BiblioSchedule>()
+                .HasData(
+                new BiblioSchedule
+                {
+                    UPCCode = "b20200601",
+                    CampusId = 1,
+                    StartTime = DateTime.Now,
+                    EndTime = DateTime.Now.AddHours(4),
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                });
         }
     }
 }

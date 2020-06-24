@@ -1,7 +1,7 @@
 {
   "ReRoutes": [
     {
-      "DownstreamPathTemplate": "/api/catalog/",
+      "DownstreamPathTemplate": "/api/catalog/serviceTypes",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -12,13 +12,10 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "AuthKey"
       },
-      "RouteClaimsRequirement": {
-        "Roles": "User"
-      },
-      "key": "catalog",
+      "key": "serviceTypes",
       "FileCacheOptions": {
         "TtlSeconds": 60, //cache duration in sec
-        "Region": "catalogcached"
+        "Region": "servicetypescached"
       },
       "RateLimitOptions": {
         "EnableRateLimiting": true,
@@ -26,11 +23,89 @@
         "PeriodTimespan": 1,
         "Limit": 1
       },
-      "UpstreamPathTemplate": "/catalogservice",
-      "UpstreamHttpMethod": [ "Get", "Post" ]
+      "UpstreamPathTemplate": "/catalogservice/serviceTypes",
+      "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/authentication/",
+      "DownstreamPathTemplate": "/api/catalog/attentionModes",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "attentionModes",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "attentionmodescached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/attentionModes",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/campus",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "campus",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "campuscached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/campus",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/knowledgeBase",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "knowledgeBase",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "knowledgebasecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/knowledgeBase",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/authentication/login",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -38,18 +113,32 @@
           "Port": 50771
         }
       ],
-      "key": "user",
-      "UpstreamPathTemplate": "/authentication",
-      "UpstreamHttpMethod": [ "Post", "Get" ]
+      "key": "login",
+      "UpstreamPathTemplate": "/authenticationservice/login",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/authentication/loginInfo",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50771
+        }
+      ],
+      "key": "loginInfo",
+      "UpstreamPathTemplate": "/authenticationservice/loginInfo",
+      "UpstreamHttpMethod": [ "Post" ]
     }
   ],
   "Aggregates": [
     {
       "ReRouteKeys": [
-        "user",
-        "catalog"
+        "knowledgeBase",
+        "serviceTypes",
+        "login"
       ],
-      "UpstreamPathTemplate": "/user-catalog"
+      "UpstreamPathTemplate": "/knowledgeBase-serviceTypes-login"
     }
   ],
   "GlobalConfiguration": {

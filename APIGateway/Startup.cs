@@ -58,7 +58,7 @@ namespace APIGateway
             app.UseAuthentication();
             app.UseAuthorization();
 
-            // app.UseRouting();
+            //app.UseRouting();
 
             //app.UseEndpoints(endpoints =>
             //{

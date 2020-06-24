@@ -9,6 +9,7 @@ using AuthenticationMicroservice.Database;
 using AuthenticationMicroservice.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
@@ -64,9 +65,9 @@ namespace AuthenticationMicroservice.Controllers
                                       FirstName = user.FirstName,
                                       LastName = user.LastName,
                                       Names = user.Names,
-                                      Email = user.Email,
-                                      Phone = user.Phone,
-                                      Career = user.Career
+                                      Email = user.Email,                                      
+                                      Career = user.Career,
+                                      Modality = user.Modality
                                   }).FirstOrDefault();
 
             // Genera el token en base a la data obtenida de BD
@@ -74,6 +75,25 @@ namespace AuthenticationMicroservice.Controllers
 
             // Retorna la estructura UserInfoModel en el body-response
             return Ok(data);
-        }        
+        }
+
+        [HttpPost("loginInfo")]
+        // Parámetros que se deben enviar en el body-request: LoginInfoModel => UPCCode, FirstName, LastName, Names, Career, Modality, CreationDate y CreationUser
+        public void RegisterLoginInfo(LoginInfoModel model)
+        {            
+            UserLogins userLogin = new UserLogins {
+                UPCCode = model.UPCCode,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Names = model.Names,
+                Career = model.Career,
+                Modality = model.Modality,
+                CreationDate = DateTime.Now,
+                CreationUser = model.UPCCode
+            };            
+
+            db.UserLogins.Add(userLogin);
+            db.SaveChanges();
+        }
     }
 }

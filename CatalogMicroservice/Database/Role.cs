@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CatalogMicroservice.Database
 {
-    public class ServiceType
+    public class Role
     {
         [Key]
-        public int ServiceTypeId { get; set; }
+        public int RoleId { get; set; }
         public string Description { get; set; }
         public DateTime CreationDate { get; set; }
         public string CreationUser { get; set; }
 
         // Foreign Key
-        public virtual ICollection<KnowledgeBase> KnowledgeBase { get; set; }
-        public virtual ICollection<ServiceRequest> ServiceRequest { get; set; }
-        
+        public virtual ICollection<UserRoles> UserRoles { get; set; }
     }
 }

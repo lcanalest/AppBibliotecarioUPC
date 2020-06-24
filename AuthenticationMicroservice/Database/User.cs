@@ -18,9 +18,9 @@ namespace DomainModels.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Names { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
+        public string Email { get; set; }        
         public string Career { get; set; }
+        public string Modality { get; set; }
         public DateTime CreationDate { get; set; }
         public string CreationUser { get; set; }
     }
