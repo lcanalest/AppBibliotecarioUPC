@@ -140,6 +140,13 @@ namespace CatalogMicroservice.Database
                     Description = "Análisis bibliométrico",
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
+                },
+                new ServiceType
+                {
+                    ServiceTypeId = 8,
+                    Description = "Asesoría",
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
                 }
                 );
 
@@ -206,6 +213,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para citación de figuras y tablas",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -217,6 +226,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para el parafraseo",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -228,6 +239,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para las notas a pie de página",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -239,6 +252,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para reporte de coincidencias de Safe Assign",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -250,6 +265,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para búsqueda por temas",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -261,6 +278,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para búsqueda de revistas en cuartiles",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -272,6 +291,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para revistas indexadas por disciplina",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -283,6 +304,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para instalar import to Mendeley",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -294,6 +317,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para instalar el plugin de word en Mendeley",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -305,6 +330,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para búsqueda de artículos científicos",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -316,6 +343,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para ruta de plantillas de acuerdo a la carrera",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
@@ -327,6 +356,8 @@ namespace CatalogMicroservice.Database
                     Answer = "Respuesta para análisis bibliométrico?",
                     InquiriesQuantity = 0,
                     Pinned = 0,
+                    PositiveCalification = 0,
+                    NegativeCalification = 0,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 }

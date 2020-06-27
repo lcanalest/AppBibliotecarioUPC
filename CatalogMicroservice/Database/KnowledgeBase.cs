@@ -17,6 +17,8 @@ namespace CatalogMicroservice.Database
         public string Answer { get; set; }
         public int InquiriesQuantity { get; set; }
         public int Pinned { get; set; }
+        public int PositiveCalification { get; set; }
+        public int NegativeCalification { get; set; }
         public DateTime CreationDate { get; set; }
         public string CreationUser { get; set; }
 

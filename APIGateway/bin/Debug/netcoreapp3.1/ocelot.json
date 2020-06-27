@@ -1,7 +1,7 @@
 {
   "ReRoutes": [
     {
-      "DownstreamPathTemplate": "/api/catalog/serviceTypes",
+      "DownstreamPathTemplate": "/api/catalog/lstServiceTypes",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -12,10 +12,10 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "AuthKey"
       },
-      "key": "serviceTypes",
+      "key": "lstServiceTypes",
       "FileCacheOptions": {
         "TtlSeconds": 60, //cache duration in sec
-        "Region": "servicetypescached"
+        "Region": "lstservicetypescached"
       },
       "RateLimitOptions": {
         "EnableRateLimiting": true,
@@ -23,11 +23,11 @@
         "PeriodTimespan": 1,
         "Limit": 1
       },
-      "UpstreamPathTemplate": "/catalogservice/serviceTypes",
+      "UpstreamPathTemplate": "/catalogservice/lstServiceTypes",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/catalog/attentionModes",
+      "DownstreamPathTemplate": "/api/catalog/crtServiceType",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -38,10 +38,10 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "AuthKey"
       },
-      "key": "attentionModes",
+      "key": "crtServiceType",
       "FileCacheOptions": {
         "TtlSeconds": 60, //cache duration in sec
-        "Region": "attentionmodescached"
+        "Region": "crtservicetypecached"
       },
       "RateLimitOptions": {
         "EnableRateLimiting": true,
@@ -49,11 +49,89 @@
         "PeriodTimespan": 1,
         "Limit": 1
       },
-      "UpstreamPathTemplate": "/catalogservice/attentionModes",
+      "UpstreamPathTemplate": "/catalogservice/crtServiceType",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/dltServiceType",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "dltServiceType",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "dltservicetypecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/dltServiceType",
+      "UpstreamHttpMethod": [ "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/updServiceType",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "updServiceType",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "updservicetypecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/updServiceType",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/lstAttentionModes",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "lstAttentionModes",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "lstAttentionModescached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/lstAttentionModes",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/catalog/campus",
+      "DownstreamPathTemplate": "/api/catalog/crtAttentionMode",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -64,10 +142,10 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "AuthKey"
       },
-      "key": "campus",
+      "key": "crtAttentionMode",
       "FileCacheOptions": {
         "TtlSeconds": 60, //cache duration in sec
-        "Region": "campuscached"
+        "Region": "crtattentionmodecached"
       },
       "RateLimitOptions": {
         "EnableRateLimiting": true,
@@ -75,11 +153,89 @@
         "PeriodTimespan": 1,
         "Limit": 1
       },
-      "UpstreamPathTemplate": "/catalogservice/campus",
+      "UpstreamPathTemplate": "/catalogservice/crtAttentionMode",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/dltAttentionMode",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "dltAttentionMode",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "dltattentionmodecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/dltAttentionMode",
+      "UpstreamHttpMethod": [ "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/updAttentionMode",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "updAttentionMode",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "updattentionmodecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/updAttentionMode",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/lstCampus",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "lstCampus",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "lstcampuscached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/lstCampus",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/catalog/knowledgeBase",
+      "DownstreamPathTemplate": "/api/catalog/crtCampus",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -90,10 +246,10 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "AuthKey"
       },
-      "key": "knowledgeBase",
+      "key": "crtCampus",
       "FileCacheOptions": {
         "TtlSeconds": 60, //cache duration in sec
-        "Region": "knowledgebasecached"
+        "Region": "crtcampuscached"
       },
       "RateLimitOptions": {
         "EnableRateLimiting": true,
@@ -101,8 +257,242 @@
         "PeriodTimespan": 1,
         "Limit": 1
       },
-      "UpstreamPathTemplate": "/catalogservice/knowledgeBase",
+      "UpstreamPathTemplate": "/catalogservice/crtCampus",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/dltCampus",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "dltCampus",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "dltcampuscached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/dltCampus",
+      "UpstreamHttpMethod": [ "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/updCampus",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "updCampus",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "updcampuscached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/updCampus",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/lstKnowledgeBase",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "lstKnowledgeBase",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "lstknowledgebasecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/lstKnowledgeBase",
       "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/crtKnowledgeBase",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "crtKnowledgeBase",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "crtknowledgebasecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/crtKnowledgeBase",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/dltKnowledgeBase",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "dltKnowledgeBase",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "dltknowledgebasecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/dltKnowledgeBase",
+      "UpstreamHttpMethod": [ "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/updKnowledgeBase",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "updKnowledgeBase",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "updknowledgebasecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/updKnowledgeBase",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/updKBPositiveRate",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "updKBPositiveRate",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "updkbpositiveratecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/updKBPositiveRate",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/updKBNegativeRate",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "updKBNegativeRate",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "updkbnegativeratecached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/updKBNegativeRate",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/crtServiceRequest",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "crtServiceRequest",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "crtservicerequestcached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/crtServiceRequest",
+      "UpstreamHttpMethod": [ "Post" ]
     },
     {
       "DownstreamPathTemplate": "/api/authentication/login",
@@ -134,11 +524,14 @@
   "Aggregates": [
     {
       "ReRouteKeys": [
-        "knowledgeBase",
-        "serviceTypes",
-        "login"
+        "login",
+        "lstServiceTypes",
+        "crtServiceType",
+        "lstAttentionModes",
+        "lstCampus",
+        "lstKnowledgeBase"
       ],
-      "UpstreamPathTemplate": "/knowledgeBase-serviceTypes-login"
+      "UpstreamPathTemplate": "/login-lstServiceTypes-crtServiceType-lstAttentionModes-lstCampus-lstKnowledgeBase"
     }
   ],
   "GlobalConfiguration": {

@@ -628,6 +628,7 @@ C:\Users\kani\source\repos\AppBibliotecarioUPC\AuthenticationMicroservice\bin\De
 C:\Users\kani\source\repos\AppBibliotecarioUPC\AuthenticationMicroservice\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\kani\source\repos\AppBibliotecarioUPC\AuthenticationMicroservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\kani\source\repos\AppBibliotecarioUPC\AuthenticationMicroservice\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\kani\source\repos\AppBibliotecarioUPC\AuthenticationMicroservice\obj\Debug\netcoreapp3.1\AuthenticationMicroservice.csprojAssemblyReference.cache
 C:\Users\kani\source\repos\AppBibliotecarioUPC\AuthenticationMicroservice\obj\Debug\netcoreapp3.1\AuthenticationMicroservice.AssemblyInfoInputs.cache
 C:\Users\kani\source\repos\AppBibliotecarioUPC\AuthenticationMicroservice\obj\Debug\netcoreapp3.1\AuthenticationMicroservice.AssemblyInfo.cs
 C:\Users\kani\source\repos\AppBibliotecarioUPC\AuthenticationMicroservice\obj\Debug\netcoreapp3.1\AuthenticationMicroservice.csproj.CoreCompileInputs.cache
