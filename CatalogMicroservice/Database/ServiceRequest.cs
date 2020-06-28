@@ -17,6 +17,9 @@ namespace CatalogMicroservice.Database
         public int ServiceTypeId { get; set; }
         public int AttentionModeId { get; set; }
         public int CampusId { get; set; }
+        public string RequestDetail { get; set; }
+        public string FileName { get; set; }
+        public byte[] FileContent { get; set; }
         public DateTime CreationDate { get; set; }
         public string CreationUser { get; set; }
 

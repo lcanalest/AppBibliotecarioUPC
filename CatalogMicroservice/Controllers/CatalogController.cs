@@ -250,7 +250,10 @@ namespace CatalogMicroservice.Controllers
                 Modality = model.Modality,
                 ServiceTypeId = model.ServiceTypeId,
                 AttentionModeId = model.AttentionModeId,
-                CampusId = model.CampusId,                
+                CampusId = model.CampusId, 
+                RequestDetail = model.RequestDetail, 
+                FileName = model.FileName, 
+                //FileContent= model.FileContent, aquí se debería mandar el contenido del archivo en binary
                 CreationDate = DateTime.Now,
                 CreationUser = model.CreationUser
             };

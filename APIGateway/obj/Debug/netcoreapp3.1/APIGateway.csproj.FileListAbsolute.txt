@@ -177,7 +177,6 @@ C:\Users\kani\source\repos\AppBibliotecarioUPC\APIGateway\bin\Debug\netcoreapp3.
 C:\Users\kani\source\repos\AppBibliotecarioUPC\APIGateway\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\kani\source\repos\AppBibliotecarioUPC\APIGateway\bin\Debug\netcoreapp3.1\Ocelot.dll
 C:\Users\kani\source\repos\AppBibliotecarioUPC\APIGateway\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\kani\source\repos\AppBibliotecarioUPC\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.csprojAssemblyReference.cache
 C:\Users\kani\source\repos\AppBibliotecarioUPC\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.AssemblyInfoInputs.cache
 C:\Users\kani\source\repos\AppBibliotecarioUPC\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.AssemblyInfo.cs
 C:\Users\kani\source\repos\AppBibliotecarioUPC\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.csproj.CoreCompileInputs.cache
