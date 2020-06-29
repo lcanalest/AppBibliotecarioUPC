@@ -54,10 +54,10 @@ namespace AuthenticationMicroservice.Migrations
                 columns: new[] { "UserId", "Career", "CreationDate", "CreationUser", "Email", "FirstName", "LastName", "Modality", "Names", "Password", "UPCCode" },
                 values: new object[,]
                 {
-                    { 1, "Ingeniería de Sistemas", new DateTime(2020, 6, 28, 18, 18, 39, 488, DateTimeKind.Local).AddTicks(464), "ADMIN01", "U201524462@upc.edu.pe", "Acero", "Soria", "EPE", "Dany Daniel", "Password1", "U201524462" },
-                    { 2, "Ingeniería de Sistemas", new DateTime(2020, 6, 28, 18, 18, 39, 488, DateTimeKind.Local).AddTicks(952), "ADMIN01", "U201524476@upc.edu.pe", "Canales", "Tacilla", "EPE", "Luis Brayan", "Password2", "U201524476" },
-                    { 3, "", new DateTime(2020, 6, 28, 18, 18, 39, 488, DateTimeKind.Local).AddTicks(962), "ADMIN01", "b20200601@upc.edu.pe", "Mármol", "Coloma", "", "Roberto André", "Password3", "b20200601" },
-                    { 4, "", new DateTime(2020, 6, 28, 18, 18, 39, 488, DateTimeKind.Local).AddTicks(965), "ADMIN01", "s20200601@upc.edu.pe", "Chumacero", "Cruz", "", "Luigui", "Password4", "s20200601" }
+                    { 1, "Ingeniería de Sistemas", new DateTime(2020, 6, 28, 19, 39, 45, 992, DateTimeKind.Local).AddTicks(9433), "ADMIN01", "U201524462@upc.edu.pe", "Acero", "Soria", "EPE", "Dany Daniel", "Password1", "U201524462" },
+                    { 2, "Ingeniería de Sistemas", new DateTime(2020, 6, 28, 19, 39, 45, 993, DateTimeKind.Local).AddTicks(33), "ADMIN01", "U201524476@upc.edu.pe", "Canales", "Tacilla", "EPE", "Luis Brayan", "Password2", "U201524476" },
+                    { 3, "", new DateTime(2020, 6, 28, 19, 39, 45, 993, DateTimeKind.Local).AddTicks(48), "ADMIN01", "b20200601@upc.edu.pe", "Mármol", "Coloma", "", "Roberto André", "Password3", "b20200601" },
+                    { 4, "", new DateTime(2020, 6, 28, 19, 39, 45, 993, DateTimeKind.Local).AddTicks(51), "ADMIN01", "s20200601@upc.edu.pe", "Chumacero", "Cruz", "", "Luigui", "Password4", "s20200601" }
                 });
         }
 

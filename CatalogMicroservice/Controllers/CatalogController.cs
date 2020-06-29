@@ -161,10 +161,16 @@ namespace CatalogMicroservice.Controllers
                     on kb.ServiceTypeId equals st.ServiceTypeId                                       
                     select new ListKnowledgeBaseModel
                     {
+                        QuestionId = kb.QuestionId,
+                        ServiceTypeId = st.ServiceTypeId,
                         ServiceTypeDescription = st.Description,
                         Question = kb.Question,
                         Answer = kb.Answer,
                         InquiriesQuantity = kb.InquiriesQuantity
+                        //ServiceTypeDescription = st.Description,
+                        //Question = kb.Question,
+                        //Answer = kb.Answer,
+                        //InquiriesQuantity = kb.InquiriesQuantity
                     }).OrderByDescending(kb => kb.InquiriesQuantity)
                     .ToList();            
             return Ok(data);
