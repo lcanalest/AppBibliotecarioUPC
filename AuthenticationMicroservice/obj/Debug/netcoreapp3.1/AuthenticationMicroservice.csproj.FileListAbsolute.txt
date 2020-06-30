@@ -767,4 +767,3 @@ G:\Luis Canales\AppBibliotecarioUPC2\AuthenticationMicroservice\obj\Debug\netcor
 G:\Luis Canales\AppBibliotecarioUPC2\AuthenticationMicroservice\obj\Debug\netcoreapp3.1\AuthenticationMicroservice.dll
 G:\Luis Canales\AppBibliotecarioUPC2\AuthenticationMicroservice\obj\Debug\netcoreapp3.1\AuthenticationMicroservice.pdb
 G:\Luis Canales\AppBibliotecarioUPC2\AuthenticationMicroservice\obj\Debug\netcoreapp3.1\AuthenticationMicroservice.genruntimeconfig.cache
-G:\Luis Canales\AppBibliotecarioUPC2\AuthenticationMicroservice\obj\Debug\netcoreapp3.1\AuthenticationMicroservice.csprojAssemblyReference.cache

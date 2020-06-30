@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using CatalogMicroservice.Database;
 using CatalogMicroservice.Models;
@@ -33,7 +36,7 @@ namespace CatalogMicroservice.Controllers
         {
             ServiceType serviceType = new ServiceType
             {
-                Description = model.Description,                
+                Description = model.Description,
                 CreationDate = DateTime.Now,
                 CreationUser = model.CreationUser
             };
@@ -45,7 +48,7 @@ namespace CatalogMicroservice.Controllers
         [HttpDelete("dltServiceType")]
         // Parámetros que se deben enviar en el body-request: DeleteServiceTypeModel => ServiceTypeId
         public void DeleteServiceType(DeleteServiceTypeModel model)
-        {            
+        {
             db.Remove(db.ServiceTypes.Single(st => st.ServiceTypeId == model.ServiceTypeId));
             db.SaveChanges();
         }
@@ -158,7 +161,7 @@ namespace CatalogMicroservice.Controllers
             List<ListKnowledgeBaseModel> data = new List<ListKnowledgeBaseModel>();
             data = (from kb in db.KnowledgeBase
                     join st in db.ServiceTypes
-                    on kb.ServiceTypeId equals st.ServiceTypeId                                       
+                    on kb.ServiceTypeId equals st.ServiceTypeId
                     select new ListKnowledgeBaseModel
                     {
                         QuestionId = kb.QuestionId,
@@ -167,12 +170,8 @@ namespace CatalogMicroservice.Controllers
                         Question = kb.Question,
                         Answer = kb.Answer,
                         InquiriesQuantity = kb.InquiriesQuantity
-                        //ServiceTypeDescription = st.Description,
-                        //Question = kb.Question,
-                        //Answer = kb.Answer,
-                        //InquiriesQuantity = kb.InquiriesQuantity
                     }).OrderByDescending(kb => kb.InquiriesQuantity)
-                    .ToList();            
+                    .ToList();
             return Ok(data);
         }
 
@@ -243,29 +242,43 @@ namespace CatalogMicroservice.Controllers
         /* Service Requests */
         [HttpPost("crtServiceRequest")]
         // Parámetros que se deben enviar en el body-request: CreateServiceRequestModel => UPCCode, FirstName, LastName, Names, Email, Career, Modality, ServiceTypeId, AttentionModeId, CampusId y CreationUser
-        public void CreateServiceRequest(CreateServiceRequestModel model)
+        public IActionResult CreateServiceRequest([FromForm] CreateServiceRequestModel model)
         {
-            ServiceRequest serviceRequest = new ServiceRequest
+            try
             {
-                UPCCode = model.UPCCode,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Names = model.Names,
-                Email = model.Email,
-                Career = model.Career,
-                Modality = model.Modality,
-                ServiceTypeId = model.ServiceTypeId,
-                AttentionModeId = model.AttentionModeId,
-                CampusId = model.CampusId, 
-                RequestDetail = model.RequestDetail, 
-                FileName = model.FileName, 
-                //FileContent= model.FileContent, aquí se debería mandar el contenido del archivo en binary
-                CreationDate = DateTime.Now,
-                CreationUser = model.CreationUser
-            };
+                byte[] file = null;
+                using (var memoryStream = new MemoryStream())
+                {
+                    model.FileContent.CopyToAsync(memoryStream);
+                    file = memoryStream.ToArray();
+                }
+                ServiceRequest serviceRequest = new ServiceRequest
+                {
+                    UPCCode = model.UPCCode,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Names = model.Names,
+                    Email = model.Email,
+                    Career = model.Career,
+                    Modality = model.Modality,
+                    ServiceTypeId = model.ServiceTypeId,
+                    AttentionModeId = model.AttentionModeId,
+                    CampusId = model.CampusId,
+                    RequestDetail = model.RequestDetail,
+                    FileName = model.FileName,
+                    FileContent = file,
+                    CreationDate = DateTime.Now,
+                    CreationUser = model.CreationUser
+                };
 
-            db.ServiceRequests.Add(serviceRequest);
-            db.SaveChanges();
+                db.ServiceRequests.Add(serviceRequest);
+                db.SaveChanges();
+                return Ok(new { status = true, message = "Solicitud creada correctamente" });
+            }
+            catch (Exception ex)
+            {
+                return this.NotFound(ex.Message);
+            }
         }
     }
 }
