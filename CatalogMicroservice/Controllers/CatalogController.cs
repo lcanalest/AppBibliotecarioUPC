@@ -273,7 +273,12 @@ namespace CatalogMicroservice.Controllers
 
                 db.ServiceRequests.Add(serviceRequest);
                 db.SaveChanges();
-                return Ok(new { status = true, message = "OK" });
+                return Ok(
+                    new
+                    {
+                        status = true,
+                        message = "OK"
+                    });
             }
             catch (Exception ex)
             {
