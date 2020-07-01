@@ -170,6 +170,7 @@ namespace CatalogMicroservice.Controllers
                         Question = kb.Question,
                         Answer = kb.Answer,
                         InquiriesQuantity = kb.InquiriesQuantity
+
                     }).OrderByDescending(kb => kb.InquiriesQuantity)
                     .ToList();
             return Ok(data);
