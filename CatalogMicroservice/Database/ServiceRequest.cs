@@ -20,6 +20,8 @@ namespace CatalogMicroservice.Database
         public string RequestDetail { get; set; }
         public string FileName { get; set; }
         public byte[] FileContent { get; set; }
+        public int ServiceStatusId { get; set; }
+        public string BUserCode { get; set; }
         public DateTime CreationDate { get; set; }
         public string CreationUser { get; set; }
 
@@ -27,5 +29,7 @@ namespace CatalogMicroservice.Database
         public ServiceType ServiceType { get; set; }
         public AttentionMode AttentionMode { get; set; }
         public Campus Campus { get; set; }
+        public ServiceStatus ServiceStatus { get; set; }
+        public BackofficeUser BackofficeUser { get; set; }
     }
 }

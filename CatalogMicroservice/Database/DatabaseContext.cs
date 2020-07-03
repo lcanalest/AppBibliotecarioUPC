@@ -16,8 +16,9 @@ namespace CatalogMicroservice.Database
         }
         public DbSet<ServiceType> ServiceTypes { get; set; }
         public DbSet<AttentionMode> AttentionModes { get; set; }
-        public DbSet<Campus> Campus { get; set; }
+        public DbSet<Campus> Campus { get; set; }        
         public DbSet<KnowledgeBase> KnowledgeBase { get; set; }
+        public DbSet<ServiceStatus> ServiceStatus { get; set; }
         public DbSet<BackofficeUser> BackofficeUsers { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRoles> UserRoles { get; set; }
@@ -44,14 +45,17 @@ namespace CatalogMicroservice.Database
             .WithMany(k => k.KnowledgeBase)
             .HasForeignKey(s => s.ServiceTypeId);
 
+            modelBuilder.Entity<ServiceStatus>()
+                .HasKey(ss => new { ss.ServiceStatusId });
+
             modelBuilder.Entity<BackofficeUser>()
-                .HasKey(bu => new { bu.UPCCode });
+                .HasKey(bu => new { bu.BUserCode });
 
             modelBuilder.Entity<Role>()
                 .HasKey(r => new { r.RoleId});
 
             modelBuilder.Entity<UserRoles>()
-                .HasKey(ur => new { ur.UPCCode, ur.RoleId });
+                .HasKey(ur => new { ur.BUserCode, ur.RoleId });
 
             modelBuilder.Entity<UserRoles>()
             .HasOne(r => r.Role)
@@ -59,12 +63,12 @@ namespace CatalogMicroservice.Database
             .HasForeignKey(r => r.RoleId);            
 
             modelBuilder.Entity<BiblioSchedule>()
-                .HasKey(bs => new { bs.UPCCode, bs.CampusId });
+                .HasKey(bs => new { bs.BUserCode, bs.CampusId });
 
             modelBuilder.Entity<BiblioSchedule>()
             .HasOne(bu => bu.BackofficeUser)
             .WithMany(bs => bs.BiblioSchedule)
-            .HasForeignKey(bu => bu.UPCCode);
+            .HasForeignKey(bu => bu.BUserCode);
 
             modelBuilder.Entity<BiblioSchedule>()
             .HasOne(c => c.Campus)
@@ -88,6 +92,16 @@ namespace CatalogMicroservice.Database
             .HasOne(c => c.Campus)
             .WithMany(sr => sr.ServiceRequest)
             .HasForeignKey(c => c.CampusId);
+
+            modelBuilder.Entity<ServiceRequest>()
+            .HasOne(ss => ss.ServiceStatus)
+            .WithMany(sr => sr.ServiceRequest)
+            .HasForeignKey(ss => ss.ServiceStatusId);
+
+            modelBuilder.Entity<ServiceRequest>()
+            .HasOne(bu => bu.BackofficeUser)
+            .WithMany(sr => sr.ServiceRequest)
+            .HasForeignKey(bu => bu.BUserCode);
 
             modelBuilder
                 .Entity<ServiceType>()
@@ -197,6 +211,13 @@ namespace CatalogMicroservice.Database
                 {
                     CampusId = 4,
                     Description = "Campus San Isidro",
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                },
+                new Campus
+                {
+                    CampusId = 5,
+                    Description = "Campus Virtual",
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 }
@@ -364,11 +385,44 @@ namespace CatalogMicroservice.Database
                 );
 
             modelBuilder
+                .Entity<ServiceStatus>()
+                .HasData(
+                new ServiceStatus
+                {
+                    ServiceStatusId = 1,
+                    Description = "Registrada",                    
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                },
+                new ServiceStatus
+                {
+                    ServiceStatusId = 2,
+                    Description = "Asignada",                    
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                },
+                new ServiceStatus
+                {
+                    ServiceStatusId = 3,
+                    Description = "En atención",
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                },
+                new ServiceStatus
+                {
+                    ServiceStatusId = 4,
+                    Description = "Cerrada",
+                    CreationDate = DateTime.Now,
+                    CreationUser = "ADMIN01"
+                }
+                );
+
+            modelBuilder
                 .Entity<BackofficeUser>()
                 .HasData(
                 new BackofficeUser
                 {
-                    UPCCode = "b20200601",
+                    BUserCode = "b20200601",
                     FirstName = "Mármol",
                     LastName = "Coloma",
                     Names = "Roberto André",
@@ -378,7 +432,7 @@ namespace CatalogMicroservice.Database
                 },
                 new BackofficeUser
                 {
-                    UPCCode = "s20200601",                    
+                    BUserCode = "s20200601",                    
                     FirstName = "Chumacero",
                     LastName = "Cruz",
                     Names = "Luigui",
@@ -412,14 +466,14 @@ namespace CatalogMicroservice.Database
                 .HasData(
                 new UserRoles
                 {
-                    UPCCode = "b20200601",
+                    BUserCode = "b20200601",
                     RoleId = 1,                    
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 },
                 new UserRoles
                 {
-                    UPCCode = "s20200601",
+                    BUserCode = "s20200601",
                     RoleId = 2,
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
@@ -431,7 +485,7 @@ namespace CatalogMicroservice.Database
                 .HasData(
                 new BiblioSchedule
                 {
-                    UPCCode = "b20200601",
+                    BUserCode = "b20200601",
                     CampusId = 1,
                     StartTime = DateTime.Now,
                     EndTime = DateTime.Now.AddHours(4),

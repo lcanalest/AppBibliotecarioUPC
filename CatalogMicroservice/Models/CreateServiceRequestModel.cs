@@ -21,6 +21,8 @@ namespace CatalogMicroservice.Models
         public string RequestDetail { get; set; }
         public string FileName { get; set; }
         public IFormFile FileContent { get; set; }
+        public int ServiceStatusId { get; set; }
+        public string BUserCode { get; set; }
         public string CreationUser { get; set; }
     }
 }

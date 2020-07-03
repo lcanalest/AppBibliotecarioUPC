@@ -6,7 +6,7 @@ namespace CatalogMicroservice.Database
     public class BiblioSchedule
     {
         [Key]
-        public string UPCCode { get; set; }
+        public string BUserCode { get; set; }
         public int CampusId { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }

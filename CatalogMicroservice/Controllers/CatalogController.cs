@@ -268,6 +268,8 @@ namespace CatalogMicroservice.Controllers
                     RequestDetail = model.RequestDetail,
                     FileName = model.FileName,
                     FileContent = file,
+                    ServiceStatusId = 1,
+                    BUserCode = "b20200601",
                     CreationDate = DateTime.Now,
                     CreationUser = model.CreationUser
                 };
