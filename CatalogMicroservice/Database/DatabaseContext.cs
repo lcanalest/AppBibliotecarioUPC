@@ -217,7 +217,7 @@ namespace CatalogMicroservice.Database
                 new Campus
                 {
                     CampusId = 5,
-                    Description = "Campus Virtual",
+                    Description = "No Aplica",
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 }
