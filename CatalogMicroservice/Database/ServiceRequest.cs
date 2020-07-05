@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CatalogMicroservice.Database
@@ -31,5 +32,6 @@ namespace CatalogMicroservice.Database
         public Campus Campus { get; set; }
         public ServiceStatus ServiceStatus { get; set; }
         public BackofficeUser BackofficeUser { get; set; }
+        public virtual ICollection<ServiceRequestDetail> ServiceRequestDetail { get; set; }
     }
 }

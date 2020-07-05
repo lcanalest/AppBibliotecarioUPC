@@ -23,3 +23,6 @@ Fix al servicio de registro de solicitud
 # Release 1.6
 Se agregan 2 atributos al servicio de registro de solicitud.
 Se agrega servicio de envío de correos: https://github.com/lcanalest/SendMailApp
+
+# Release 1.7
+Se agregan servicios para atención de la solicitud  

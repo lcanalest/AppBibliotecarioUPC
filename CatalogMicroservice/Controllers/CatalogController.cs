@@ -9,6 +9,7 @@ using CatalogMicroservice.Database;
 using CatalogMicroservice.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CatalogMicroservice.Controllers
 {
@@ -287,6 +288,126 @@ namespace CatalogMicroservice.Controllers
             {
                 return this.NotFound(ex.Message);
             }
+        }
+
+        [HttpGet("lstServiceRequestByBiblio")]
+        // Parámetros que se deben enviar en el body-request: GetServiceRequestByBiblioModel => BUserCode
+        public IActionResult GetServiceRequestByBiblio(GetServiceRequestByBiblioModel model)
+        {
+            List<ListServiceRequestByBiblioModel> data = new List<ListServiceRequestByBiblioModel>();
+            data = (from sr in db.ServiceRequests
+                    join st in db.ServiceTypes
+                        on sr.ServiceTypeId equals st.ServiceTypeId
+                    join am in db.AttentionModes
+                        on sr.AttentionModeId equals am.AttentionModeId
+                    join c in db.Campus
+                        on sr.CampusId equals c.CampusId
+                    join ss in db.ServiceStatus
+                        on sr.ServiceStatusId equals ss.ServiceStatusId
+                    where sr.BUserCode == model.BUserCode
+                    select new ListServiceRequestByBiblioModel
+                    {
+                        ServiceRequestId = sr.ServiceRequestId,
+                        UPCCode = sr.UPCCode,
+                        FirstName = sr.FirstName,
+                        LastName = sr.LastName,
+                        Names = sr.Names,
+                        Email = sr.Email,
+                        Career = sr.Career,
+                        Modality = sr.Modality,
+                        ServiceType = st.Description,
+                        AttentionMode = am.Description,
+                        Campus = c.Description,                        
+                        ServiceStatus = ss.Description
+                    })
+                    .OrderBy(sr => sr.ServiceRequestId)
+                    .ToList();
+            return Ok(data);
+        }
+
+        [HttpGet("getServiceRequestById")]
+        // Parámetros que se deben enviar en el body-request: GetServiceRequestByIdModel => ServiceRequestId
+        public IActionResult GetServiceRequestById(GetServiceRequestByIdModel model)
+        {
+            InfoServiceRequestByIdModel data = (from sr in db.ServiceRequests
+                                                join st in db.ServiceTypes
+                                                    on sr.ServiceTypeId equals st.ServiceTypeId
+                                                join am in db.AttentionModes
+                                                    on sr.AttentionModeId equals am.AttentionModeId
+                                                join c in db.Campus
+                                                    on sr.CampusId equals c.CampusId
+                                                join ss in db.ServiceStatus
+                                                    on sr.ServiceStatusId equals ss.ServiceStatusId
+                                                where sr.ServiceRequestId == model.ServiceRequestId
+                                                select new InfoServiceRequestByIdModel
+                                                {
+                                                    ServiceRequestId = sr.ServiceRequestId,
+                                                    UPCCode = sr.UPCCode,
+                                                    FirstName = sr.FirstName,
+                                                    LastName = sr.LastName,
+                                                    Names = sr.Names,
+                                                    Email = sr.Email,
+                                                    Career = sr.Career,
+                                                    Modality = sr.Modality,
+                                                    ServiceType = st.Description,
+                                                    AttentionMode = am.Description,
+                                                    Campus = c.Description,
+                                                    RequestDetail = sr.RequestDetail,
+                                                    FileName = sr.FileName,
+                                                    FileContent = "",
+                                                    ServiceStatusId = sr.ServiceStatusId,
+                                                    ServiceStatus = ss.Description,
+                                                    CreationDate = ss.CreationDate
+                                                }).FirstOrDefault();
+
+            return Ok(data);
+        }
+
+        [HttpPost("crtServiceRequestDetail")]
+        // Parámetros que se deben enviar en el body-request: CreateKnowledgeBaseModel => ServiceTypeId, Question, Answer, Pinned y CreationUser
+        public IActionResult CreateServiceRequestDetail(CreateServiceRequestDetailModel model)
+        {
+            var sequence = db.ServiceRequestDetail
+                            .Where(srd => srd.ServiceRequestId == model.ServiceRequestId)
+                            .OrderByDescending(srd => srd.ServiceRequestSequence)
+                            .Select(srd => srd.ServiceRequestSequence)
+                            .FirstOrDefault();
+            
+            sequence += 1;
+            
+
+            ServiceRequestDetail serviceRequestDetail = new ServiceRequestDetail
+            {
+                ServiceRequestId = model.ServiceRequestId,
+                ServiceRequestSequence = sequence,
+                ServiceStatusId = model.ServiceStatusId,
+                AttentionDetail = model.AttentionDetail,
+                CreationDate = DateTime.Now,
+                CreationUser = model.CreationUser
+            };
+
+            db.ServiceRequestDetail.Add(serviceRequestDetail);
+            db.SaveChanges();
+
+            return Ok(
+                    new
+                    {
+                        status = true,
+                        message = "OK"
+                    });
+        }
+
+        [HttpGet("lstServiceRequestDetail")]
+        // Parámetros que se deben enviar en el body-request: GetServiceRequestByIdModel => ServiceRequestId
+        public IActionResult GetServiceRequestDetail(GetServiceRequestByIdModel model)
+        {
+            var data = db.ServiceRequestDetail
+                        .Where(srd => srd.ServiceRequestId == model.ServiceRequestId)
+                        .Select(srd => new { srd.ServiceRequestId, srd.ServiceRequestSequence, srd.ServiceStatusId, srd.AttentionDetail, srd.CreationDate, srd.CreationUser })
+                        .OrderBy(srd => srd.ServiceRequestSequence)
+                        .ToList();
+
+            return Ok(data);
         }
     }
 }

@@ -16,5 +16,6 @@ namespace CatalogMicroservice.Database
 
         // Foreign Key        
         public virtual ICollection<ServiceRequest> ServiceRequest { get; set; }
+        public virtual ICollection<ServiceRequestDetail> ServiceRequestDetail { get; set; }
     }
 }

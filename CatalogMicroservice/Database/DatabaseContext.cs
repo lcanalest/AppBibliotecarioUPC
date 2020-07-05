@@ -1,6 +1,7 @@
 ﻿using CatalogMicroservice.Database;
 using DomainModels.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace CatalogMicroservice.Database
         public DbSet<UserRoles> UserRoles { get; set; }
         public DbSet<BiblioSchedule> BiblioSchedule { get; set; }
         public DbSet<ServiceRequest> ServiceRequests { get; set; }
+        public DbSet<ServiceRequestDetail> ServiceRequestDetail { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -41,9 +43,9 @@ namespace CatalogMicroservice.Database
                 .HasKey(k => new { k.QuestionId });
 
             modelBuilder.Entity<KnowledgeBase>()
-            .HasOne(s => s.ServiceType)
-            .WithMany(k => k.KnowledgeBase)
-            .HasForeignKey(s => s.ServiceTypeId);
+                .HasOne(s => s.ServiceType)
+                .WithMany(k => k.KnowledgeBase)
+                .HasForeignKey(s => s.ServiceTypeId);
 
             modelBuilder.Entity<ServiceStatus>()
                 .HasKey(ss => new { ss.ServiceStatusId });
@@ -58,50 +60,64 @@ namespace CatalogMicroservice.Database
                 .HasKey(ur => new { ur.BUserCode, ur.RoleId });
 
             modelBuilder.Entity<UserRoles>()
-            .HasOne(r => r.Role)
-            .WithMany(u => u.UserRoles)
-            .HasForeignKey(r => r.RoleId);            
+                .HasOne(r => r.Role)
+                .WithMany(u => u.UserRoles)
+                .HasForeignKey(r => r.RoleId);            
 
             modelBuilder.Entity<BiblioSchedule>()
-                .HasKey(bs => new { bs.BUserCode, bs.CampusId });
+                .HasKey(bs => new { bs.BUserCode, bs.CampusId, bs.StartTime, bs.EndTime });
 
             modelBuilder.Entity<BiblioSchedule>()
-            .HasOne(bu => bu.BackofficeUser)
-            .WithMany(bs => bs.BiblioSchedule)
-            .HasForeignKey(bu => bu.BUserCode);
+                .HasOne(bu => bu.BackofficeUser)
+                .WithMany(bs => bs.BiblioSchedule)
+                .HasForeignKey(bu => bu.BUserCode);
 
             modelBuilder.Entity<BiblioSchedule>()
-            .HasOne(c => c.Campus)
-            .WithMany(bs => bs.BiblioSchedule)
-            .HasForeignKey(c => c.CampusId);
+                .HasOne(c => c.Campus)
+                .WithMany(bs => bs.BiblioSchedule)
+                .HasForeignKey(c => c.CampusId);
 
             modelBuilder.Entity<ServiceRequest>()
                 .HasKey(sr => new { sr.ServiceRequestId });
 
             modelBuilder.Entity<ServiceRequest>()
-            .HasOne(st => st.ServiceType)
-            .WithMany(sr => sr.ServiceRequest)
-            .HasForeignKey(st => st.ServiceTypeId);
+                .HasOne(st => st.ServiceType)
+                .WithMany(sr => sr.ServiceRequest)
+                .HasForeignKey(st => st.ServiceTypeId);
 
             modelBuilder.Entity<ServiceRequest>()
-            .HasOne(am => am.AttentionMode)
-            .WithMany(sr => sr.ServiceRequest)
-            .HasForeignKey(am => am.AttentionModeId);
+                .HasOne(am => am.AttentionMode)
+                .WithMany(sr => sr.ServiceRequest)
+                .HasForeignKey(am => am.AttentionModeId);
 
             modelBuilder.Entity<ServiceRequest>()
-            .HasOne(c => c.Campus)
-            .WithMany(sr => sr.ServiceRequest)
-            .HasForeignKey(c => c.CampusId);
+                .HasOne(c => c.Campus)
+                .WithMany(sr => sr.ServiceRequest)
+                .HasForeignKey(c => c.CampusId);
 
             modelBuilder.Entity<ServiceRequest>()
-            .HasOne(ss => ss.ServiceStatus)
-            .WithMany(sr => sr.ServiceRequest)
-            .HasForeignKey(ss => ss.ServiceStatusId);
+                .HasOne(ss => ss.ServiceStatus)
+                .WithMany(sr => sr.ServiceRequest)
+                .HasForeignKey(ss => ss.ServiceStatusId);
 
             modelBuilder.Entity<ServiceRequest>()
-            .HasOne(bu => bu.BackofficeUser)
-            .WithMany(sr => sr.ServiceRequest)
-            .HasForeignKey(bu => bu.BUserCode);
+                .HasOne(bu => bu.BackofficeUser)
+                .WithMany(sr => sr.ServiceRequest)
+                .HasForeignKey(bu => bu.BUserCode);
+
+            modelBuilder.Entity<ServiceRequestDetail>()
+                .HasKey(srd => new { srd.ServiceRequestId, srd.ServiceRequestSequence });
+
+            modelBuilder.Entity<ServiceRequestDetail>()
+                .HasOne(sr => sr.ServiceRequest)
+                .WithMany(srd => srd.ServiceRequestDetail)
+                .HasForeignKey(sr => sr.ServiceRequestId);
+
+            modelBuilder.Entity<ServiceRequestDetail>()
+                .HasOne(ss => ss.ServiceStatus)
+                .WithMany(srd => srd.ServiceRequestDetail)
+                .HasForeignKey(ss => ss.ServiceStatusId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder
                 .Entity<ServiceType>()
@@ -217,7 +233,7 @@ namespace CatalogMicroservice.Database
                 new Campus
                 {
                     CampusId = 5,
-                    Description = "No Aplica",
+                    Description = "Campus Virtual",
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 }
