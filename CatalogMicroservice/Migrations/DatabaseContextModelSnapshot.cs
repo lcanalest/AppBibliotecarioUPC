@@ -43,14 +43,14 @@ namespace CatalogMicroservice.Migrations
                         new
                         {
                             AttentionModeId = 1,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 124, DateTimeKind.Local).AddTicks(3384),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(4851),
                             CreationUser = "ADMIN01",
                             Description = "Presencial"
                         },
                         new
                         {
                             AttentionModeId = 2,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 124, DateTimeKind.Local).AddTicks(4280),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(6049),
                             CreationUser = "ADMIN01",
                             Description = "Virtual"
                         });
@@ -87,7 +87,7 @@ namespace CatalogMicroservice.Migrations
                         new
                         {
                             BUserCode = "b20200601",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(5581),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(923),
                             CreationUser = "ADMIN01",
                             Email = "b20200601@upc.edu.pe",
                             FirstName = "Mármol",
@@ -97,7 +97,7 @@ namespace CatalogMicroservice.Migrations
                         new
                         {
                             BUserCode = "s20200601",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(6412),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(2299),
                             CreationUser = "ADMIN01",
                             Email = "s20200601@upc.edu.pe",
                             FirstName = "Chumacero",
@@ -137,9 +137,9 @@ namespace CatalogMicroservice.Migrations
                         {
                             BUserCode = "b20200601",
                             CampusId = 1,
-                            StartTime = new DateTime(2020, 7, 4, 18, 34, 25, 126, DateTimeKind.Local).AddTicks(2008),
-                            EndTime = new DateTime(2020, 7, 4, 22, 34, 25, 126, DateTimeKind.Local).AddTicks(2433),
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 126, DateTimeKind.Local).AddTicks(3018),
+                            StartTime = new DateTime(2020, 7, 5, 16, 55, 2, 984, DateTimeKind.Local).AddTicks(578),
+                            EndTime = new DateTime(2020, 7, 5, 20, 55, 2, 984, DateTimeKind.Local).AddTicks(1272),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 984, DateTimeKind.Local).AddTicks(2032),
                             CreationUser = "ADMIN01"
                         });
                 });
@@ -168,35 +168,35 @@ namespace CatalogMicroservice.Migrations
                         new
                         {
                             CampusId = 1,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 124, DateTimeKind.Local).AddTicks(5729),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(7793),
                             CreationUser = "ADMIN01",
                             Description = "Campus Monterrico"
                         },
                         new
                         {
                             CampusId = 2,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 124, DateTimeKind.Local).AddTicks(6578),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(8888),
                             CreationUser = "ADMIN01",
                             Description = "Campus Villa"
                         },
                         new
                         {
                             CampusId = 3,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 124, DateTimeKind.Local).AddTicks(6596),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(8915),
                             CreationUser = "ADMIN01",
                             Description = "Campus San Miguel"
                         },
                         new
                         {
                             CampusId = 4,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 124, DateTimeKind.Local).AddTicks(6597),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(8915),
                             CreationUser = "ADMIN01",
                             Description = "Campus San Isidro"
                         },
                         new
                         {
                             CampusId = 5,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 124, DateTimeKind.Local).AddTicks(6598),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(8918),
                             CreationUser = "ADMIN01",
                             Description = "Campus Virtual"
                         });
@@ -247,7 +247,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 1,
                             Answer = "Respuesta para citación de figuras y tablas",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(110),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(3923),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -260,7 +260,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 2,
                             Answer = "Respuesta para el parafraseo",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(970),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5157),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -273,7 +273,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 3,
                             Answer = "Respuesta para las notas a pie de página",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(988),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5181),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -286,7 +286,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 4,
                             Answer = "Respuesta para reporte de coincidencias de Safe Assign",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(990),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5184),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -299,7 +299,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 5,
                             Answer = "Respuesta para búsqueda por temas",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(991),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5187),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -312,7 +312,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 6,
                             Answer = "Respuesta para búsqueda de revistas en cuartiles",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(993),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5190),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -325,7 +325,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 7,
                             Answer = "Respuesta para revistas indexadas por disciplina",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(995),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5193),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -338,7 +338,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 8,
                             Answer = "Respuesta para instalar import to Mendeley",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(996),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5196),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -351,7 +351,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 9,
                             Answer = "Respuesta para instalar el plugin de word en Mendeley",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(998),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5196),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -364,7 +364,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 10,
                             Answer = "Respuesta para búsqueda de artículos científicos",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(999),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5199),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -377,7 +377,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 11,
                             Answer = "Respuesta para ruta de plantillas de acuerdo a la carrera",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(1000),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5202),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -390,7 +390,7 @@ namespace CatalogMicroservice.Migrations
                         {
                             QuestionId = 12,
                             Answer = "Respuesta para análisis bibliométrico?",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(1002),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5205),
                             CreationUser = "ADMIN01",
                             InquiriesQuantity = 0,
                             NegativeCalification = 0,
@@ -425,14 +425,14 @@ namespace CatalogMicroservice.Migrations
                         new
                         {
                             RoleId = 1,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(7724),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(4215),
                             CreationUser = "ADMIN01",
                             Description = "Bibliotecólogo"
                         },
                         new
                         {
                             RoleId = 2,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(8528),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(5256),
                             CreationUser = "ADMIN01",
                             Description = "Supervisor"
                         });
@@ -562,28 +562,28 @@ namespace CatalogMicroservice.Migrations
                         new
                         {
                             ServiceStatusId = 1,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(2347),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(6892),
                             CreationUser = "ADMIN01",
                             Description = "Registrada"
                         },
                         new
                         {
                             ServiceStatusId = 2,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(3163),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(7912),
                             CreationUser = "ADMIN01",
                             Description = "Asignada"
                         },
                         new
                         {
                             ServiceStatusId = 3,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(3181),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(7936),
                             CreationUser = "ADMIN01",
                             Description = "En atención"
                         },
                         new
                         {
                             ServiceStatusId = 4,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(3182),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(7936),
                             CreationUser = "ADMIN01",
                             Description = "Cerrada"
                         });
@@ -613,56 +613,56 @@ namespace CatalogMicroservice.Migrations
                         new
                         {
                             ServiceTypeId = 1,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 122, DateTimeKind.Local).AddTicks(1388),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 977, DateTimeKind.Local).AddTicks(3629),
                             CreationUser = "ADMIN01",
                             Description = "Normas de citación y referencias"
                         },
                         new
                         {
                             ServiceTypeId = 2,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 123, DateTimeKind.Local).AddTicks(813),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9447),
                             CreationUser = "ADMIN01",
                             Description = "Test de Similitud"
                         },
                         new
                         {
                             ServiceTypeId = 3,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 123, DateTimeKind.Local).AddTicks(848),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9495),
                             CreationUser = "ADMIN01",
                             Description = "Búsqueda de información"
                         },
                         new
                         {
                             ServiceTypeId = 4,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 123, DateTimeKind.Local).AddTicks(850),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9498),
                             CreationUser = "ADMIN01",
                             Description = "Gestores de referencias (Mendeley)"
                         },
                         new
                         {
                             ServiceTypeId = 5,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 123, DateTimeKind.Local).AddTicks(851),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9501),
                             CreationUser = "ADMIN01",
                             Description = "Búsqueda de artículos científicos"
                         },
                         new
                         {
                             ServiceTypeId = 6,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 123, DateTimeKind.Local).AddTicks(852),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9501),
                             CreationUser = "ADMIN01",
                             Description = "Plantilla de Tesis y Trabajo de investigación"
                         },
                         new
                         {
                             ServiceTypeId = 7,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 123, DateTimeKind.Local).AddTicks(853),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9504),
                             CreationUser = "ADMIN01",
                             Description = "Análisis bibliométrico"
                         },
                         new
                         {
                             ServiceTypeId = 8,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 123, DateTimeKind.Local).AddTicks(855),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9507),
                             CreationUser = "ADMIN01",
                             Description = "Asesoría"
                         });
@@ -693,14 +693,14 @@ namespace CatalogMicroservice.Migrations
                         {
                             BUserCode = "b20200601",
                             RoleId = 1,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 125, DateTimeKind.Local).AddTicks(9848),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(7657),
                             CreationUser = "ADMIN01"
                         },
                         new
                         {
                             BUserCode = "s20200601",
                             RoleId = 2,
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 25, 126, DateTimeKind.Local).AddTicks(654),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(8879),
                             CreationUser = "ADMIN01"
                         });
                 });

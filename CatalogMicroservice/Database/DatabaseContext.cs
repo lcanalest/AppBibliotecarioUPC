@@ -1,5 +1,4 @@
 ﻿using CatalogMicroservice.Database;
-using DomainModels.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
@@ -233,7 +232,7 @@ namespace CatalogMicroservice.Database
                 new Campus
                 {
                     CampusId = 5,
-                    Description = "Campus Virtual",
+                    Description = "No Aplica",
                     CreationDate = DateTime.Now,
                     CreationUser = "ADMIN01"
                 }

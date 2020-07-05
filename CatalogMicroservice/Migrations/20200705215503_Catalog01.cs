@@ -112,7 +112,7 @@ namespace CatalogMicroservice.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BiblioSchedule", x => new { x.BUserCode, x.CampusId });
+                    table.PrimaryKey("PK_BiblioSchedule", x => new { x.BUserCode, x.CampusId, x.StartTime, x.EndTime });
                     table.ForeignKey(
                         name: "FK_BiblioSchedule_BackofficeUsers_BUserCode",
                         column: x => x.BUserCode,
@@ -233,13 +233,40 @@ namespace CatalogMicroservice.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ServiceRequestDetail",
+                columns: table => new
+                {
+                    ServiceRequestId = table.Column<int>(nullable: false),
+                    ServiceRequestSequence = table.Column<int>(nullable: false),
+                    ServiceStatusId = table.Column<int>(nullable: false),
+                    AttentionDetail = table.Column<string>(nullable: true),
+                    CreationDate = table.Column<DateTime>(nullable: false),
+                    CreationUser = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServiceRequestDetail", x => new { x.ServiceRequestId, x.ServiceRequestSequence });
+                    table.ForeignKey(
+                        name: "FK_ServiceRequestDetail_ServiceRequests_ServiceRequestId",
+                        column: x => x.ServiceRequestId,
+                        principalTable: "ServiceRequests",
+                        principalColumn: "ServiceRequestId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ServiceRequestDetail_ServiceStatus_ServiceStatusId",
+                        column: x => x.ServiceStatusId,
+                        principalTable: "ServiceStatus",
+                        principalColumn: "ServiceStatusId");
+                });
+
             migrationBuilder.InsertData(
                 table: "AttentionModes",
                 columns: new[] { "AttentionModeId", "CreationDate", "CreationUser", "Description" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2020, 7, 3, 12, 31, 44, 283, DateTimeKind.Local).AddTicks(7470), "ADMIN01", "Presencial" },
-                    { 2, new DateTime(2020, 7, 3, 12, 31, 44, 283, DateTimeKind.Local).AddTicks(8384), "ADMIN01", "Virtual" }
+                    { 1, new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(4851), "ADMIN01", "Presencial" },
+                    { 2, new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(6049), "ADMIN01", "Virtual" }
                 });
 
             migrationBuilder.InsertData(
@@ -247,8 +274,8 @@ namespace CatalogMicroservice.Migrations
                 columns: new[] { "BUserCode", "CreationDate", "CreationUser", "Email", "FirstName", "LastName", "Names" },
                 values: new object[,]
                 {
-                    { "b20200601", new DateTime(2020, 7, 3, 12, 31, 44, 285, DateTimeKind.Local).AddTicks(134), "ADMIN01", "b20200601@upc.edu.pe", "Mármol", "Coloma", "Roberto André" },
-                    { "s20200601", new DateTime(2020, 7, 3, 12, 31, 44, 285, DateTimeKind.Local).AddTicks(991), "ADMIN01", "s20200601@upc.edu.pe", "Chumacero", "Cruz", "Luigui" }
+                    { "b20200601", new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(923), "ADMIN01", "b20200601@upc.edu.pe", "Mármol", "Coloma", "Roberto André" },
+                    { "s20200601", new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(2299), "ADMIN01", "s20200601@upc.edu.pe", "Chumacero", "Cruz", "Luigui" }
                 });
 
             migrationBuilder.InsertData(
@@ -256,11 +283,11 @@ namespace CatalogMicroservice.Migrations
                 columns: new[] { "CampusId", "CreationDate", "CreationUser", "Description" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2020, 7, 3, 12, 31, 44, 283, DateTimeKind.Local).AddTicks(9888), "ADMIN01", "Campus Monterrico" },
-                    { 2, new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(761), "ADMIN01", "Campus Villa" },
-                    { 3, new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(779), "ADMIN01", "Campus San Miguel" },
-                    { 4, new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(780), "ADMIN01", "Campus San Isidro" },
-                    { 5, new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(782), "ADMIN01", "Campus Virtual" }
+                    { 1, new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(7793), "ADMIN01", "Campus Monterrico" },
+                    { 2, new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(8888), "ADMIN01", "Campus Villa" },
+                    { 3, new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(8915), "ADMIN01", "Campus San Miguel" },
+                    { 4, new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(8915), "ADMIN01", "Campus San Isidro" },
+                    { 5, new DateTime(2020, 7, 5, 16, 55, 2, 981, DateTimeKind.Local).AddTicks(8918), "ADMIN01", "Campus Virtual" }
                 });
 
             migrationBuilder.InsertData(
@@ -268,8 +295,8 @@ namespace CatalogMicroservice.Migrations
                 columns: new[] { "RoleId", "CreationDate", "CreationUser", "Description" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2020, 7, 3, 12, 31, 44, 285, DateTimeKind.Local).AddTicks(2401), "ADMIN01", "Bibliotecólogo" },
-                    { 2, new DateTime(2020, 7, 3, 12, 31, 44, 285, DateTimeKind.Local).AddTicks(3231), "ADMIN01", "Supervisor" }
+                    { 1, new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(4215), "ADMIN01", "Bibliotecólogo" },
+                    { 2, new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(5256), "ADMIN01", "Supervisor" }
                 });
 
             migrationBuilder.InsertData(
@@ -277,10 +304,10 @@ namespace CatalogMicroservice.Migrations
                 columns: new[] { "ServiceStatusId", "CreationDate", "CreationUser", "Description" },
                 values: new object[,]
                 {
-                    { 4, new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(7671), "ADMIN01", "Cerrada" },
-                    { 3, new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(7670), "ADMIN01", "En atención" },
-                    { 1, new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(6817), "ADMIN01", "Registrada" },
-                    { 2, new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(7653), "ADMIN01", "Asignada" }
+                    { 4, new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(7936), "ADMIN01", "Cerrada" },
+                    { 3, new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(7936), "ADMIN01", "En atención" },
+                    { 1, new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(6892), "ADMIN01", "Registrada" },
+                    { 2, new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(7912), "ADMIN01", "Asignada" }
                 });
 
             migrationBuilder.InsertData(
@@ -288,38 +315,38 @@ namespace CatalogMicroservice.Migrations
                 columns: new[] { "ServiceTypeId", "CreationDate", "CreationUser", "Description" },
                 values: new object[,]
                 {
-                    { 7, new DateTime(2020, 7, 3, 12, 31, 44, 282, DateTimeKind.Local).AddTicks(5173), "ADMIN01", "Análisis bibliométrico" },
-                    { 1, new DateTime(2020, 7, 3, 12, 31, 44, 281, DateTimeKind.Local).AddTicks(6497), "ADMIN01", "Normas de citación y referencias" },
-                    { 2, new DateTime(2020, 7, 3, 12, 31, 44, 282, DateTimeKind.Local).AddTicks(5132), "ADMIN01", "Test de Similitud" },
-                    { 3, new DateTime(2020, 7, 3, 12, 31, 44, 282, DateTimeKind.Local).AddTicks(5167), "ADMIN01", "Búsqueda de información" },
-                    { 4, new DateTime(2020, 7, 3, 12, 31, 44, 282, DateTimeKind.Local).AddTicks(5169), "ADMIN01", "Gestores de referencias (Mendeley)" },
-                    { 5, new DateTime(2020, 7, 3, 12, 31, 44, 282, DateTimeKind.Local).AddTicks(5171), "ADMIN01", "Búsqueda de artículos científicos" },
-                    { 6, new DateTime(2020, 7, 3, 12, 31, 44, 282, DateTimeKind.Local).AddTicks(5172), "ADMIN01", "Plantilla de Tesis y Trabajo de investigación" },
-                    { 8, new DateTime(2020, 7, 3, 12, 31, 44, 282, DateTimeKind.Local).AddTicks(5175), "ADMIN01", "Asesoría" }
+                    { 7, new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9504), "ADMIN01", "Análisis bibliométrico" },
+                    { 1, new DateTime(2020, 7, 5, 16, 55, 2, 977, DateTimeKind.Local).AddTicks(3629), "ADMIN01", "Normas de citación y referencias" },
+                    { 2, new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9447), "ADMIN01", "Test de Similitud" },
+                    { 3, new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9495), "ADMIN01", "Búsqueda de información" },
+                    { 4, new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9498), "ADMIN01", "Gestores de referencias (Mendeley)" },
+                    { 5, new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9501), "ADMIN01", "Búsqueda de artículos científicos" },
+                    { 6, new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9501), "ADMIN01", "Plantilla de Tesis y Trabajo de investigación" },
+                    { 8, new DateTime(2020, 7, 5, 16, 55, 2, 978, DateTimeKind.Local).AddTicks(9507), "ADMIN01", "Asesoría" }
                 });
 
             migrationBuilder.InsertData(
                 table: "BiblioSchedule",
-                columns: new[] { "BUserCode", "CampusId", "CreationDate", "CreationUser", "EndTime", "StartTime" },
-                values: new object[] { "b20200601", 1, new DateTime(2020, 7, 3, 12, 31, 44, 285, DateTimeKind.Local).AddTicks(9684), "ADMIN01", new DateTime(2020, 7, 3, 16, 31, 44, 285, DateTimeKind.Local).AddTicks(9090), new DateTime(2020, 7, 3, 12, 31, 44, 285, DateTimeKind.Local).AddTicks(8478) });
+                columns: new[] { "BUserCode", "CampusId", "StartTime", "EndTime", "CreationDate", "CreationUser" },
+                values: new object[] { "b20200601", 1, new DateTime(2020, 7, 5, 16, 55, 2, 984, DateTimeKind.Local).AddTicks(578), new DateTime(2020, 7, 5, 20, 55, 2, 984, DateTimeKind.Local).AddTicks(1272), new DateTime(2020, 7, 5, 16, 55, 2, 984, DateTimeKind.Local).AddTicks(2032), "ADMIN01" });
 
             migrationBuilder.InsertData(
                 table: "KnowledgeBase",
                 columns: new[] { "QuestionId", "Answer", "CreationDate", "CreationUser", "InquiriesQuantity", "NegativeCalification", "Pinned", "PositiveCalification", "Question", "ServiceTypeId" },
                 values: new object[,]
                 {
-                    { 1, "Respuesta para citación de figuras y tablas", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(4503), "ADMIN01", 0, 0, 0, 0, "¿Cómo citar figuras o tablas?", 1 },
-                    { 2, "Respuesta para el parafraseo", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5389), "ADMIN01", 0, 0, 0, 0, "¿Cómo es el parafraseo?", 1 },
-                    { 3, "Respuesta para las notas a pie de página", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5407), "ADMIN01", 0, 0, 0, 0, "¿Qué son las notas a pie de página? ¿Cómo se usan?", 1 },
-                    { 4, "Respuesta para reporte de coincidencias de Safe Assign", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5409), "ADMIN01", 0, 0, 0, 0, "Reporte de coincidencias de Safe Assign", 2 },
-                    { 5, "Respuesta para búsqueda por temas", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5411), "ADMIN01", 0, 0, 0, 0, "Búsqueda por temas", 3 },
-                    { 6, "Respuesta para búsqueda de revistas en cuartiles", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5414), "ADMIN01", 0, 0, 0, 0, "Búsqueda de revistas en cuartiles", 3 },
-                    { 7, "Respuesta para revistas indexadas por disciplina", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5416), "ADMIN01", 0, 0, 0, 0, "Revistas indexadas por disciplina", 3 },
-                    { 8, "Respuesta para instalar import to Mendeley", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5418), "ADMIN01", 0, 0, 0, 0, "¿Cómo instalar import to Mendeley?", 4 },
-                    { 9, "Respuesta para instalar el plugin de word en Mendeley", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5419), "ADMIN01", 0, 0, 0, 0, "¿Cómo instalar el plugin de word en Mendeley?", 4 },
-                    { 10, "Respuesta para búsqueda de artículos científicos", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5421), "ADMIN01", 0, 0, 0, 0, "¿Dónde puedo buscar artículos científicos?", 5 },
-                    { 11, "Respuesta para ruta de plantillas de acuerdo a la carrera", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5423), "ADMIN01", 0, 0, 0, 0, "¿Dónde puedo encontrar plantillas de acuerdo a mi carrera?", 6 },
-                    { 12, "Respuesta para análisis bibliométrico?", new DateTime(2020, 7, 3, 12, 31, 44, 284, DateTimeKind.Local).AddTicks(5424), "ADMIN01", 0, 0, 0, 0, "¿En qué se basa el análisis bibliométrico?", 7 }
+                    { 1, "Respuesta para citación de figuras y tablas", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(3923), "ADMIN01", 0, 0, 0, 0, "¿Cómo citar figuras o tablas?", 1 },
+                    { 2, "Respuesta para el parafraseo", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5157), "ADMIN01", 0, 0, 0, 0, "¿Cómo es el parafraseo?", 1 },
+                    { 3, "Respuesta para las notas a pie de página", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5181), "ADMIN01", 0, 0, 0, 0, "¿Qué son las notas a pie de página? ¿Cómo se usan?", 1 },
+                    { 4, "Respuesta para reporte de coincidencias de Safe Assign", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5184), "ADMIN01", 0, 0, 0, 0, "Reporte de coincidencias de Safe Assign", 2 },
+                    { 5, "Respuesta para búsqueda por temas", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5187), "ADMIN01", 0, 0, 0, 0, "Búsqueda por temas", 3 },
+                    { 6, "Respuesta para búsqueda de revistas en cuartiles", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5190), "ADMIN01", 0, 0, 0, 0, "Búsqueda de revistas en cuartiles", 3 },
+                    { 7, "Respuesta para revistas indexadas por disciplina", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5193), "ADMIN01", 0, 0, 0, 0, "Revistas indexadas por disciplina", 3 },
+                    { 8, "Respuesta para instalar import to Mendeley", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5196), "ADMIN01", 0, 0, 0, 0, "¿Cómo instalar import to Mendeley?", 4 },
+                    { 9, "Respuesta para instalar el plugin de word en Mendeley", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5196), "ADMIN01", 0, 0, 0, 0, "¿Cómo instalar el plugin de word en Mendeley?", 4 },
+                    { 10, "Respuesta para búsqueda de artículos científicos", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5199), "ADMIN01", 0, 0, 0, 0, "¿Dónde puedo buscar artículos científicos?", 5 },
+                    { 11, "Respuesta para ruta de plantillas de acuerdo a la carrera", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5202), "ADMIN01", 0, 0, 0, 0, "¿Dónde puedo encontrar plantillas de acuerdo a mi carrera?", 6 },
+                    { 12, "Respuesta para análisis bibliométrico?", new DateTime(2020, 7, 5, 16, 55, 2, 982, DateTimeKind.Local).AddTicks(5205), "ADMIN01", 0, 0, 0, 0, "¿En qué se basa el análisis bibliométrico?", 7 }
                 });
 
             migrationBuilder.InsertData(
@@ -327,8 +354,8 @@ namespace CatalogMicroservice.Migrations
                 columns: new[] { "BUserCode", "RoleId", "CreationDate", "CreationUser" },
                 values: new object[,]
                 {
-                    { "b20200601", 1, new DateTime(2020, 7, 3, 12, 31, 44, 285, DateTimeKind.Local).AddTicks(4830), "ADMIN01" },
-                    { "s20200601", 2, new DateTime(2020, 7, 3, 12, 31, 44, 285, DateTimeKind.Local).AddTicks(5997), "ADMIN01" }
+                    { "b20200601", 1, new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(7657), "ADMIN01" },
+                    { "s20200601", 2, new DateTime(2020, 7, 5, 16, 55, 2, 983, DateTimeKind.Local).AddTicks(8879), "ADMIN01" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -340,6 +367,11 @@ namespace CatalogMicroservice.Migrations
                 name: "IX_KnowledgeBase_ServiceTypeId",
                 table: "KnowledgeBase",
                 column: "ServiceTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ServiceRequestDetail_ServiceStatusId",
+                table: "ServiceRequestDetail",
+                column: "ServiceStatusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ServiceRequests_AttentionModeId",
@@ -381,10 +413,16 @@ namespace CatalogMicroservice.Migrations
                 name: "KnowledgeBase");
 
             migrationBuilder.DropTable(
-                name: "ServiceRequests");
+                name: "ServiceRequestDetail");
 
             migrationBuilder.DropTable(
                 name: "UserRoles");
+
+            migrationBuilder.DropTable(
+                name: "ServiceRequests");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "AttentionModes");
@@ -400,9 +438,6 @@ namespace CatalogMicroservice.Migrations
 
             migrationBuilder.DropTable(
                 name: "ServiceTypes");
-
-            migrationBuilder.DropTable(
-                name: "Roles");
         }
     }
 }

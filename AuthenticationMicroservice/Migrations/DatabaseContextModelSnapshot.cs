@@ -101,7 +101,7 @@ namespace AuthenticationMicroservice.Migrations
                         {
                             UserId = 1,
                             Career = "Ingeniería de Sistemas",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 10, 496, DateTimeKind.Local).AddTicks(4484),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 54, 31, 834, DateTimeKind.Local).AddTicks(3188),
                             CreationUser = "ADMIN01",
                             Email = "U201524462@upc.edu.pe",
                             FirstName = "Acero",
@@ -115,7 +115,7 @@ namespace AuthenticationMicroservice.Migrations
                         {
                             UserId = 2,
                             Career = "Ingeniería de Sistemas",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 10, 496, DateTimeKind.Local).AddTicks(5032),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 54, 31, 834, DateTimeKind.Local).AddTicks(4965),
                             CreationUser = "ADMIN01",
                             Email = "U201524476@upc.edu.pe",
                             FirstName = "Canales",
@@ -129,7 +129,7 @@ namespace AuthenticationMicroservice.Migrations
                         {
                             UserId = 3,
                             Career = "",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 10, 496, DateTimeKind.Local).AddTicks(5042),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 54, 31, 834, DateTimeKind.Local).AddTicks(4981),
                             CreationUser = "ADMIN01",
                             Email = "b20200601@upc.edu.pe",
                             FirstName = "Mármol",
@@ -143,7 +143,7 @@ namespace AuthenticationMicroservice.Migrations
                         {
                             UserId = 4,
                             Career = "",
-                            CreationDate = new DateTime(2020, 7, 4, 18, 34, 10, 496, DateTimeKind.Local).AddTicks(5045),
+                            CreationDate = new DateTime(2020, 7, 5, 16, 54, 31, 834, DateTimeKind.Local).AddTicks(4987),
                             CreationUser = "ADMIN01",
                             Email = "s20200601@upc.edu.pe",
                             FirstName = "Chumacero",
