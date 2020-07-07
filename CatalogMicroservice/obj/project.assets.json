@@ -2079,7 +2079,7 @@
       ]
     },
     "System.Collections.NonGeneric/4.3.0": {
-      "sha512": "LE/oChpRvkSi3U25u0KnJcI44JeDZ1QJCyN4qFDx2uusEypdqR24w7lKYw21eYe5esuCBuc862wRmpF63Yy1KQ==",
+      "sha512": "prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
       "type": "package",
       "path": "system.collections.nongeneric/4.3.0",
       "files": [
@@ -2341,11 +2341,12 @@
       ]
     },
     "System.ComponentModel.TypeConverter/4.3.0": {
-      "sha512": "HZiP0DwTHJ+C+rdFqP47nBYUh5283kcwXIGY2zOVVhsJmVI/2tYiX2zNRdjRQRHsTox58Ydkec6h0pWSh8wAsw==",
+      "sha512": "16pQ6P+EdhcXzPiEK4kbA953Fu0MNG2ovxTZU81/qsCd1zPRsKc3uif5NgvllCY598k6bI0KUyKW8fanlfaDQg==",
       "type": "package",
       "path": "system.componentmodel.typeconverter/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4973,23 +4974,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\herna\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\kani\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Luis Canales\\Servicios\\AppBibliotecarioUPC\\CatalogMicroservice\\CatalogMicroservice.csproj",
+      "projectUniqueName": "C:\\Users\\kani\\source\\repos\\AppBibliotecarioUPC\\CatalogMicroservice\\CatalogMicroservice.csproj",
       "projectName": "CatalogMicroservice",
-      "projectPath": "G:\\Luis Canales\\Servicios\\AppBibliotecarioUPC\\CatalogMicroservice\\CatalogMicroservice.csproj",
-      "packagesPath": "C:\\Users\\herna\\.nuget\\packages\\",
-      "outputPath": "G:\\Luis Canales\\Servicios\\AppBibliotecarioUPC\\CatalogMicroservice\\obj\\",
+      "projectPath": "C:\\Users\\kani\\source\\repos\\AppBibliotecarioUPC\\CatalogMicroservice\\CatalogMicroservice.csproj",
+      "packagesPath": "C:\\Users\\kani\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kani\\source\\repos\\AppBibliotecarioUPC\\CatalogMicroservice\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\herna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kani\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5038,6 +5035,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.2, 3.1.2]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5046,7 +5049,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -363,6 +363,14 @@ namespace CatalogMicroservice.Controllers
             return Ok(data);
         }
 
+        /* Service Status */
+        [HttpGet("lstServiceStatus")]
+        public IActionResult GetServiceStatus()
+        {
+            var data = db.ServiceStatus.Select(ss => new { ss.ServiceStatusId, ss.Description }).ToList();
+            return Ok(data);
+        }
+
         [HttpPost("crtServiceRequestDetail")]
         // Parámetros que se deben enviar en el body-request: CreateKnowledgeBaseModel => ServiceTypeId, Question, Answer, Pinned y CreationUser
         public IActionResult CreateServiceRequestDetail(CreateServiceRequestDetailModel model)

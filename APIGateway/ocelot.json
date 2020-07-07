@@ -547,6 +547,32 @@
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
+      "DownstreamPathTemplate": "/api/catalog/lstServiceStatus",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50887
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthKey"
+      },
+      "key": "lstServiceStatus",
+      "FileCacheOptions": {
+        "TtlSeconds": 60, //cache duration in sec
+        "Region": "lstservicestatuscached"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/catalogservice/lstServiceStatus",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/catalog/crtServiceRequestDetail",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

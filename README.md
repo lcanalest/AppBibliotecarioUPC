@@ -1,4 +1,4 @@
-# AppBibliotecarioUPC
+AppBibliotecarioUPC
 Aplicación para el Bibliotecario en Línea UPC basada en Micro Servicios
 
 # Release 1.0
@@ -26,3 +26,6 @@ Se agrega servicio de envío de correos: https://github.com/lcanalest/SendMailAp
 
 # Release 1.7
 Se agregan servicios para atención de la solicitud  
+
+# Release 1.8
+Se agrega servicio para consulta de estados en la solicitudes de atención
