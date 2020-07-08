@@ -292,8 +292,11 @@ namespace CatalogMicroservice.Controllers
 
         [HttpGet("lstServiceRequestByBiblio")]
         // Parámetros que se deben enviar en el body-request: GetServiceRequestByBiblioModel => BUserCode
-        public IActionResult GetServiceRequestByBiblio(GetServiceRequestByBiblioModel model)
+        public IActionResult GetServiceRequestByBiblio(string bUserCode, int page, int zise)
         {
+            //if (model.page == 0) model.page = 1;
+            //if (model.zise == 0) model.zise = int.MaxValue;
+            //var skip = (model.page - 1) * model.zise;
             List<ListServiceRequestByBiblioModel> data = new List<ListServiceRequestByBiblioModel>();
             data = (from sr in db.ServiceRequests
                     join st in db.ServiceTypes
@@ -304,7 +307,7 @@ namespace CatalogMicroservice.Controllers
                         on sr.CampusId equals c.CampusId
                     join ss in db.ServiceStatus
                         on sr.ServiceStatusId equals ss.ServiceStatusId
-                    where sr.BUserCode == model.BUserCode
+                    where sr.BUserCode == bUserCode//model.BUserCode
                     select new ListServiceRequestByBiblioModel
                     {
                         ServiceRequestId = sr.ServiceRequestId,
@@ -327,7 +330,7 @@ namespace CatalogMicroservice.Controllers
 
         [HttpGet("getServiceRequestById")]
         // Parámetros que se deben enviar en el body-request: GetServiceRequestByIdModel => ServiceRequestId
-        public IActionResult GetServiceRequestById(GetServiceRequestByIdModel model)
+        public IActionResult GetServiceRequestById(int ServiceRequestId)//(GetServiceRequestByIdModel model)
         {
             InfoServiceRequestByIdModel data = (from sr in db.ServiceRequests
                                                 join st in db.ServiceTypes
@@ -338,7 +341,7 @@ namespace CatalogMicroservice.Controllers
                                                     on sr.CampusId equals c.CampusId
                                                 join ss in db.ServiceStatus
                                                     on sr.ServiceStatusId equals ss.ServiceStatusId
-                                                where sr.ServiceRequestId == model.ServiceRequestId
+                                                where sr.ServiceRequestId == ServiceRequestId//model.ServiceRequestId
                                                 select new InfoServiceRequestByIdModel
                                                 {
                                                     ServiceRequestId = sr.ServiceRequestId,
@@ -407,10 +410,10 @@ namespace CatalogMicroservice.Controllers
 
         [HttpGet("lstServiceRequestDetail")]
         // Parámetros que se deben enviar en el body-request: GetServiceRequestByIdModel => ServiceRequestId
-        public IActionResult GetServiceRequestDetail(GetServiceRequestByIdModel model)
+        public IActionResult GetServiceRequestDetail(int ServiceRequestId)//(GetServiceRequestByIdModel model)
         {
             var data = db.ServiceRequestDetail
-                        .Where(srd => srd.ServiceRequestId == model.ServiceRequestId)
+                        .Where(srd => srd.ServiceRequestId ==ServiceRequestId) //model.ServiceRequestId)
                         .Select(srd => new { srd.ServiceRequestId, srd.ServiceRequestSequence, srd.ServiceStatusId, srd.AttentionDetail, srd.CreationDate, srd.CreationUser })
                         .OrderBy(srd => srd.ServiceRequestSequence)
                         .ToList();
